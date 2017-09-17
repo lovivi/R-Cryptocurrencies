@@ -1,7 +1,7 @@
 # R-Cryptocurrencies
 
-The purpose of this project is to create several functions in R, easy-to use for a beginner, using some APIs for cryptocurrencies.
-As of September 16th 2017, two APIs were used: CoinMarketCap and Kraken.
+The purpose of this project is to create several functions in R, easy-to use, using some APIs for cryptocurrencies.
+As of September 16th 2017, two APIs are being used: CoinMarketCap and Kraken.
 
 ## Getting Started
 
@@ -80,7 +80,6 @@ kraken_recent_spread("ETH", "EUR", "2017-09-14 13:00", FALSE)
 ## Authors
 
 * **Etienne Mirland** - *Initial work* - 
-
 
 ## Acknowledgments
 
