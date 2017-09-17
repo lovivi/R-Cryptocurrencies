@@ -17,7 +17,7 @@ kraken_currency_list<- function(){
 }
 
 
-#Function check if our pair of currencies is valid
+#Function to check if our pair of currencies is valid
 kraken_check_pair <- function(basecurrency, pricecurrency){
   #Exit function
   exit <- function() {
@@ -41,7 +41,7 @@ kraken_check_pair <- function(basecurrency, pricecurrency){
 }
 
 
-#Obtain OHLC for a pair of currencies
+#Obtain live information for a pair of currencies
 kraken_live <- function(basecurrency = "XBT", pricecurrency = "USD", field = "all", check_pair = TRUE){
 
   #Exit function
@@ -96,7 +96,7 @@ kraken_live <- function(basecurrency = "XBT", pricecurrency = "USD", field = "al
 }
 
 
-#Obtain OHLC for a pair of currencies
+#Obtain OHLC+Volume for a pair of currencies
 kraken_OHLC <- function(basecurrency = "XBT", pricecurrency = "USD", interval = "1", start_time, check_pair = TRUE){
   
   #Exit function
@@ -206,7 +206,7 @@ kraken_recent_trades <- function(basecurrency = "XBT", pricecurrency = "USD", st
   return(kraken_data)
 }
 
-#Obtain OrderBook for a pair of currencies
+#Obtain recent bid-ask spread for a pair of currencies
 kraken_recent_spread<- function(basecurrency = "XBT", pricecurrency = "USD", start_time, check_pair = TRUE){
   
   #Check if our pair of currencies exist
