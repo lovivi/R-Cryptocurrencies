@@ -7,7 +7,7 @@ As of September 16th 2017, two APIs are being used: CoinMarketCap and Kraken.
 
 ### Prerequisites
 
-You need to have two packages installed in R.
+You need to have two packages installed in R: JSON and httr.
 ```
 library(JSON)
 library(httr)
@@ -79,9 +79,11 @@ kraken_recent_spread("ETH", "EUR", "2017-09-14 13:00", FALSE)
 ```
 ## Authors
 
-* **Etienne Mirland** - *Initial work* - 
+* **Etienne Mirland** 
 
 ## Acknowledgments
 
-* Thanks to Kraken and CoinMarketCap for providing very useful APIs
+* Thanks a lot to Kraken and CoinMarketCap for providing very useful APIs
+* Kraken API: https://www.kraken.com/help/api
+* CoinMarketCap API: https://coinmarketcap.com/api/
 
