@@ -9,8 +9,8 @@ As of September 16th 2017, two APIs were used: CoinMarketCap and Kraken.
 
 You need to have two packages installed in R.
 ```
-JSON
-httr
+library(JSON)
+library(httr)
 ```
 
 ## Functions
@@ -45,7 +45,37 @@ Four arguments: basecurrency, pricecurrency, field, check_pair (enables us to ch
 ```
 kraken_live(basecurrency = "XBT", pricecurrency = "EUR", field = "all", check_pair = FALSE)
 kraken_live(basecurrency = "ETH", pricecurrency = "EUR", field = "ask_price")
+```
+#### kraken_OHLC()
+This function retrieves OHLC + Volume for a pair of currencies.
+Five arguments: basecurrency, pricecurrency, interval (in minutes), start_time, check_pair.
 
+```
+kraken_OHLC(basecurrency = "XBT", pricecurrency = "USD", interval = "1")
+kraken_OHLC(basecurrency = "EOS", pricecurrency = "XBT", interval = "1", check_pair = FALSE)
+```
+#### kraken_order_book()
+This function retrieves the order book for a pair of currencies and results in a list with two dataframes (ask and bid).
+Four arguments: basecurrency, pricecurrency, order (the maximum amount of orders to retrieve), check_pair.
+```
+kraken_order_book(basecurrency = "XBT", pricecurrency = "USD")
+kraken_order_book(basecurrency = "XBT", pricecurrency = "USD", order = 10)
+```
+
+#### kraken_recent_trades()
+This function retrieves the latest trades for a pair of currencies.
+Four arguments: basecurrency, pricecurrency, start_time, check_pair.
+```
+kraken_recent_trades(basecurrency = "ETH", pricecurrency = "USD", start_time = "2017-09-14 13:00")
+kraken_recent_trades(basecurrency = "ETH", pricecurrency = "XBT", check_pair = FALSE)
+```
+
+#### kraken_recent_spread()
+This function retrieves the latest spread for a pair of currencies.
+Four arguments: basecurrency, pricecurrency, start_time, check_pair.
+```
+kraken_recent_spread(basecurrency = "XBT", pricecurrency = "USD", check_pair = TRUE)
+kraken_recent_spread("ETH", "EUR", "2017-09-14 13:00", FALSE)
 ```
 ## Authors
 
