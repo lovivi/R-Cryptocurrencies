@@ -40,7 +40,7 @@ No argument.
 
 #### kraken_live()
 This function retrieves several indicators (e.g. ask price, bid price, 24-h volume) for a pair of currencies (e.g. ETH/EUR).
-Four arguments: basecurrency, pricecurrency, field, check_pair (enables us to check if the two currencies are supported by Kraken).
+Four arguments: basecurrency, pricecurrency, field, check_pair (enables the user to check if both currencies are supported by Kraken).
 
 ```
 kraken_live(basecurrency = "XBT", pricecurrency = "EUR", field = "all", check_pair = FALSE)
@@ -51,8 +51,8 @@ This function retrieves OHLC + Volume for a pair of currencies.
 Five arguments: basecurrency, pricecurrency, interval (in minutes), start_time, check_pair.
 
 ```
-kraken_OHLC(basecurrency = "XBT", pricecurrency = "USD", interval = "1")
-kraken_OHLC(basecurrency = "EOS", pricecurrency = "XBT", interval = "1", check_pair = FALSE)
+kraken_OHLC(basecurrency = "XBT", pricecurrency = "USD", interval = 1)
+kraken_OHLC("EOS", "XBT", interval = 1, check_pair = FALSE)
 ```
 #### kraken_order_book()
 This function retrieves the order book for a pair of currencies and results in a list with two dataframes (ask and bid).
