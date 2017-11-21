@@ -12,7 +12,7 @@ kraken_currency_list<- function(){
   kraken_assets <- kraken_assets_raw$result
   
   kraken_assets <- c(as.character(unlist(sapply(kraken_assets, `[`, 2))))
-
+  
   return(kraken_assets)
 }
 
@@ -43,7 +43,7 @@ kraken_check_pair <- function(basecurrency, pricecurrency){
 
 #Obtain live information for a pair of currencies
 kraken_live <- function(basecurrency = "XBT", pricecurrency = "USD", field = "all", check_pair = TRUE){
-
+  
   #Exit function
   exit <- function() {
     .Internal(.invokeRestart(list(NULL, NULL), NULL))
@@ -75,7 +75,7 @@ kraken_live <- function(basecurrency = "XBT", pricecurrency = "USD", field = "al
   kraken_raw <- rawToChar(kraken_raw$content)
   kraken_raw <- fromJSON(kraken_raw)
   kraken_data <- kraken_raw$result
-
+  
   
   #subset based on the type of price
   kraken_data <- data.frame(unlist(kraken_data), row.names = kraken_data_rownames)
@@ -87,7 +87,7 @@ kraken_live <- function(basecurrency = "XBT", pricecurrency = "USD", field = "al
   
   if (field == "all"){  #subset if field is not equal to "all"
     kraken_data <- kraken_data
-    colnames(kraken_data_subset) <- paste0(basecurrency, pricecurrency)
+    colnames(kraken_data) <- paste0(basecurrency, pricecurrency)
   }else{
     kraken_data <- kraken_data[field,]
   }
@@ -117,7 +117,7 @@ kraken_OHLC <- function(basecurrency = "XBT", pricecurrency = "USD", interval = 
   if (hasArg(start_time)){
     #reconvert back to Epoch time
     start_time <- as.numeric(as.POSIXct(start_time))
-     url <- paste0("https://api.kraken.com/0/public/OHLC?pair=", basecurrency, pricecurrency, "&interval=", interval, "&since=", start_time)
+    url <- paste0("https://api.kraken.com/0/public/OHLC?pair=", basecurrency, pricecurrency, "&interval=", interval, "&since=", start_time)
   } else{
     url <- paste0("https://api.kraken.com/0/public/OHLC?pair=", basecurrency, pricecurrency, "&interval=", interval)
   }
@@ -135,7 +135,7 @@ kraken_OHLC <- function(basecurrency = "XBT", pricecurrency = "USD", interval = 
   colnames(kraken_data) <- c("open", "high", "low", "close", "vwap", "volume", "count")
   
   return(kraken_data)
-
+  
 }
 
 #Obtain OrderBook for a pair of currencies
