@@ -85,8 +85,7 @@ Work in progress. To be released in December.
 
 ## Authors
 
-* **Etienne Mirland** 
-* cryptoginza (at) gmail.com
+* **Etienne Mirland**  // Contact me: cryptoginza (at) gmail.com
 ## Acknowledgments
 
 * Thanks a lot to CoinMarketCap, Kraken and Binance for providing very useful APIs
