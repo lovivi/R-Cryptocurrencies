@@ -1,7 +1,9 @@
 # R-Cryptocurrencies
 
-The purpose of this project is to create several functions in R, easy-to use, using some APIs for cryptocurrencies.
-As of September 16th 2017, two APIs are being used: CoinMarketCap and Kraken.
+The purpose of this project is to create several functions in R, easy-to use, using some public APIs for cryptocurrencies.
+As of September 16th 2017, two public APIs are being used: CoinMarketCap and Kraken.
+
+In December 2017, a third API will be supported: Binance.
 
 ## Getting Started
 
@@ -77,6 +79,10 @@ Four arguments: basecurrency, pricecurrency, start_time, check_pair.
 kraken_recent_spread(basecurrency = "XBT", pricecurrency = "USD", check_pair = TRUE)
 kraken_recent_spread("ETH", "EUR", "2017-09-14 13:00", FALSE)
 ```
+
+### Binance's public API
+Work in progress. To be released in December.
+
 ## Authors
 
 * **Etienne Mirland** 
