@@ -86,10 +86,10 @@ Work in progress. To be released in December.
 ## Authors
 
 * **Etienne Mirland** 
-
+* cryptoginza (at) gmail.com
 ## Acknowledgments
 
-* Thanks a lot to Kraken and CoinMarketCap for providing very useful APIs
-* Kraken API: https://www.kraken.com/help/api
+* Thanks a lot to CoinMarketCap, Kraken and Binance for providing very useful APIs
 * CoinMarketCap API: https://coinmarketcap.com/api/
-
+* Kraken API: https://www.kraken.com/help/api
+* Binance API: https://www.binance.com/restapipub.html 
