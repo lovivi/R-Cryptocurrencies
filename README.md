@@ -98,14 +98,14 @@ binance_order_book_ticker("BTCUSDT", limit = 100)
 binance_order_book_ticker("WTCETH", 20) 
 ```
 #### binance_trade_list()
-This function retrieves aggregate trades list for a specific pair. It still has minor issues to be fixed.
-Four arguments: symbol, start_time, end_time, limit.
+This function retrieves aggregate trades list for a specific pair. It still has minor issues to be fixed.&nbsp;
+Four arguments: symbol, start_time, end_time, limit.&nbsp;
 If both start_time and end_time are sent, limit should not be sent AND the distance between startTime and endTime must be less than 24 hours.
 
 #### binance_OHLC()
-This function retrieves OHLC and other specific information such as volume for a specific pair.
-Five arguments: symbol, interval, limit, start_time, end_time.
-If both start_time and end_time are sent, limit should not be sent.
+This function retrieves OHLC and other specific information such as volume for a specific pair.&nbsp;
+Five arguments: symbol, interval, limit, start_time, end_time.&nbsp;
+If both start_time and end_time are sent, limit should not be sent.&nbsp;
 
 ```
 binance_OHLC("WTCBTC", interval = "5m", limit = 100)
