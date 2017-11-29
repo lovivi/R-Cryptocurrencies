@@ -79,6 +79,7 @@ Four arguments: basecurrency, pricecurrency, start_time, check_pair.
 kraken_recent_spread(basecurrency = "XBT", pricecurrency = "USD", check_pair = TRUE)
 kraken_recent_spread("ETH", "EUR", "2017-09-14 13:00", FALSE)
 ```
+![alt text](https://themerkle.com/wp-content/uploads/binance-logo.png)
 
 ### Binance's public API
 #### binance_server_time()
