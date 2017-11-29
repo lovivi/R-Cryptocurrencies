@@ -89,10 +89,46 @@ This function retrieves the complete order book for a specific pair.
 Two arguments: symbol, limit.
 Limit must be inferior to 100.
 
+The output is a list with two elements: ask_orders and bid_orders.
+
 ```
 binance_order_book_ticker("BTCUSDT", limit = 100) 
 binance_order_book_ticker("WTCETH", 20) 
 ```
+#### binance_trade_list()
+This function retrieves aggregate trades list for a specific pair.
+Four arguments: symbol, start_time, end_time, limit.
+If both start_time and end_time are sent, limit should not be sent AND the distance between startTime and endTime must be less than 24 hours.
+If start_time, end_time and limit are not sent, the most recent aggregate trades will be returned with a limit of 100.
+
+#### binance_OHLC()
+This function retrieves OHLC and other specific information such as volume for a specific pair.
+Five arguments: symbol, interval, limit, start_time, end_time.
+
+#### binance_24h_ticker_data()
+This function retrieves 24-hour data for a specific pair.
+One argument: symbol.
+
+#### binance_current_price()
+This function retrieves latest market prices for all traded pairs.
+No argument.
+```
+binance_current_price()
+```
+
+#### binance_traded_symbols()
+This function retrieves names of all traded pairs.
+No argument.
+```
+binance_traded_symbols()
+```
+#### binance_best_order_book_all()
+This function retrieves the narrowest ask/bid for all traded pairs.
+No argument.
+```
+binance_best_order_book_all()
+```
+
 ## Authors
 
 * **Etienne Mirland**  // Contact me: etienne.mirland (at) ieseg.fr
