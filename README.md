@@ -81,11 +81,21 @@ kraken_recent_spread("ETH", "EUR", "2017-09-14 13:00", FALSE)
 ```
 
 ### Binance's public API
-Work in progress. To be released in December.
+#### binance_server_time()
+This function retrieves the server time.
 
+#### binance_order_book_ticker()
+This function retrieves the complete order book for a specific pair.
+Two arguments: symbol, limit.
+Limit must be inferior to 100.
+
+```
+binance_order_book_ticker("BTCUSDT", limit = 100) 
+binance_order_book_ticker("WTCETH", 20) 
+```
 ## Authors
 
-* **Etienne Mirland**  // Contact me: cryptoginza (at) gmail.com
+* **Etienne Mirland**  // Contact me: etienne.mirland (at) ieseg.fr
 ## Acknowledgments
 
 * Thanks a lot to CoinMarketCap, Kraken and Binance for providing very useful APIs
