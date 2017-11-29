@@ -39,30 +39,46 @@ binance_order_book_ticker <- function(symbol = "ETHBTC", limit = 100) {
 }
 
 #Function to obtain aggregate trades list for a specific pair
-binance_trade_list <- function(symbol = "ETHBTC", start_time, end_time, limit) {
+binance_trade_list <- function(symbol = "ETHBTC", fromId, limit, start_time, end_time) {
   
-  if(!missing(start_time)){
+  url <- paste0("https://api.binance.com/api/v1/aggTrades?symbol=", symbol)
+  
+  if(!missing(limit)){ #if limit is set
+    if(!missing(end_time)){ # if both limit and endtime are set
+      end_time <- as.character(as.numeric(as.POSIXct(end_time)) * 1000)
+      if(!missing(start_time)){ #if limit, start_time and end_time are set
+        return("Please don't input start_time, end_time and limit at the same time")
+        #url <- paste0(url,"&limit=", limit,"&startTime=",start_time, "&endTime=",end_time)
+      }else{ #if limit and end_time are set
+        url <- paste0(url,"&endTime=",end_time,"&limit=", limit) 
+      }
+      
+    }else{   #limit is set but end_time isn't
+      
+      if(!missing(start_time)){ #if limit and start_time are set but end_time isn't
+        start_time <- as.character(as.numeric(as.POSIXct(start_time)) * 1000)
+        url <- paste0(url,"&startTime=",start_time,"&limit=", limit) 
+      }else{ #if only limit is set
+        url <- paste0(url,"&limit=", limit)
+      }
+    }
+    
+  }else{ #if limit is not set
+    
+    if(missing(start_time)){
+      return("Correct your parameters.")
+    }
+    
     if(missing(end_time)){
-      return("Please input correctly both the start and end times") 
+      return("Correct your parameters.")
     }
     
-    #reconvert back to Epoch time
-    start_time <- as.numeric(as.POSIXct(start_time)) * 1000
-    end_time <- as.numeric(as.POSIXct(end_time)) * 1000
-    url <- paste0("https://api.binance.com/api/v1/aggTrades?symbol=", symbol, 
-                  "&startTime=", start_time, 
-                  "&endTime=",end_time)
-  }else{
-    
-    if(missing(limit)){
-      print("limit was set at 100 automatically")
-      limit = 100
-    }
-    url <- paste0("https://api.binance.com/api/v1/aggTrades?symbol=", symbol, 
-                  "&limit=", limit) 
+    start_time <- as.character(as.numeric(as.POSIXct(start_time)) * 1000)
+    end_time <- as.character(as.numeric(as.POSIXct(end_time)) * 1000)
+    url <- paste0(url,"&startTime=",start_time, "&endTime=",end_time)
   }
   
-  trade_list_raw <- GET("https://api.binance.com/api/v1/aggTrades?symbol=WTCETH&limit=100")
+  trade_list_raw <- GET(url)
   trade_list_raw <- rawToChar(trade_list_raw$content)
   trade_list_raw <- fromJSON(trade_list_raw)
   trade_list <- data.frame(trade_list_raw)
@@ -78,29 +94,7 @@ binance_trade_list <- function(symbol = "ETHBTC", start_time, end_time, limit) {
 #Function to obtain OHLC for a specific pair
 binance_OHLC<- function(symbol = "ETHBTC", interval = "1m", limit, start_time, end_time){
   
-  if(!missing(start_time)){
-    if(missing(end_time)){
-      return("Please input correctly both the start and end times") 
-    }
-    
-    #reconvert back to Epoch time
-    start_time <- as.numeric(as.POSIXct(start_time)) * 1000
-    end_time <- as.numeric(as.POSIXct(end_time)) * 1000
-    url <- paste0("https://api.binance.com/api/v1/klines?symbol=", symbol, 
-                  "&interval=", interval,
-                  "&startTime=", start_time, 
-                  "&endTime=",end_time)
-  }else{
-    
-    if(missing(limit)){
-      print("limit was set at 100 automatically")
-      limit = 100
-    }
-    url <- paste0("https://api.binance.com/api/v1/klines?symbol=", symbol, 
-                  "&interval=", interval,
-                  "&limit=", limit) 
-  }
- 
+  url <- paste0("https://api.binance.com/api/v1/klines?symbol=", symbol,"&interval=", interval)
   
   available_intervals <- c("1m","3m", "5m","15m","30m","1h",
                            "2h", "4h","6h","8h","12h","1d",
@@ -109,9 +103,45 @@ binance_OHLC<- function(symbol = "ETHBTC", interval = "1m", limit, start_time, e
   if ((interval %in% available_intervals) == FALSE){
     print("Please choose an interval among these ones:")
     return(available_intervals)
-    #exit()
   }
   
+                
+  if(!missing(limit)){ #if limit is set
+    if(!missing(end_time)){ # if both limit and endtime are set
+      end_time <- as.character(as.numeric(as.POSIXct(end_time)) * 1000)
+      if(!missing(start_time)){ #if limit, start_time and end_time are set
+        return("Please don't input start_time, end_time and limit at the same time")
+        #url <- paste0(url,"&limit=", limit,"&startTime=",start_time, "&endTime=",end_time)
+      }else{ #if limit and end_time are set
+        url <- paste0(url,"&limit=", limit,"&endTime=",end_time) 
+      }
+      
+    }else{   #limit is set but end_time isn't
+      
+      if(!missing(start_time)){ #if limit and start_time are set but end_time isn't
+        start_time <- as.character(as.numeric(as.POSIXct(start_time)) * 1000)
+        url <- paste0(url,"&limit=", limit,"&startTime=",start_time) 
+      }else{ #if only limit is set
+        url <- paste0(url,"&limit=", limit)
+      }
+    }
+    
+  }else{ #if limit is not set
+    
+    if(missing(start_time)){
+      return("Correct your parameters.")
+    }
+    
+    if(missing(end_time)){
+      return("Correct your parameters.")
+    }
+    
+    start_time <- as.character(as.numeric(as.POSIXct(start_time)) * 1000)
+    end_time <- as.character(as.numeric(as.POSIXct(end_time)) * 1000)
+    url <- paste0(url,"&startTime=",start_time, "&endTime=",end_time)
+  }
+    
+
   OHLC_raw <- GET(url)
   OHLC_raw <- rawToChar(OHLC_raw$content)
   OHLC_raw <- fromJSON(OHLC_raw)
