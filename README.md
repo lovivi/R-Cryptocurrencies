@@ -98,7 +98,7 @@ binance_order_book_ticker("BTCUSDT", limit = 100)
 binance_order_book_ticker("WTCETH", 20) 
 ```
 #### binance_trade_list()
-This function retrieves aggregate trades list for a specific pair.
+This function retrieves aggregate trades list for a specific pair. It still has minor issues to be fixed.
 Four arguments: symbol, start_time, end_time, limit.
 If both start_time and end_time are sent, limit should not be sent AND the distance between startTime and endTime must be less than 24 hours.
 
