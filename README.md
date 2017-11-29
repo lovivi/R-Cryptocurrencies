@@ -3,7 +3,7 @@
 The purpose of this project is to create several functions in R, easy-to use, using some public APIs for cryptocurrencies.
 As of September 16th 2017, two public APIs are being used: CoinMarketCap and Kraken.
 
-In December 2017, a third API will be supported: Binance.
+In December 2017, a third API will be fully supported: Binance.
 
 ## Getting Started
 
@@ -34,6 +34,9 @@ Three arguments: pricecurrency, field, limit.
 coinmarketcap_global(pricecurrency = "EUR", field = "all", limit = 200)
 coinmarketcap_global(pricecurrency ="JPY", field = "total_supply", limit = 50)
 ```
+
+---------------------------------------
+
 
 ![alt text](http://bitcoinx.com/wp-content/uploads/2014/02/Kraken.jpg)
 ### Kraken's public API
@@ -80,9 +83,13 @@ Four arguments: basecurrency, pricecurrency, start_time, check_pair.
 kraken_recent_spread(basecurrency = "XBT", pricecurrency = "USD", check_pair = TRUE)
 kraken_recent_spread("ETH", "EUR", "2017-09-14 13:00", FALSE)
 ```
+
+---------------------------------------
+
+
 ![alt text](https://p13.zdassets.com/hc/settings_assets/1938355/115000012391/vDJ3jjZnVdU1CzsxaiuY6w-logo-en_svg-01.svg)
 
-### Binance's public API
+### Binance's public API - Beta
 #### binance_server_time()
 This function retrieves the server time.
 
@@ -97,7 +104,7 @@ The output is a list with two elements: ask_orders and bid_orders.
 binance_order_book_ticker("BTCUSDT", limit = 100) 
 binance_order_book_ticker("WTCETH", 20) 
 ```
-#### binance_trade_list()
+#### binance_trade_list() [IN PROGRESS]
 This function retrieves aggregate trades list for a specific pair. It still has minor issues to be fixed.<br />
 Four arguments: symbol, start_time, end_time, limit.<br />
 If both start_time and end_time are sent, limit should not be sent AND the distance between startTime and endTime must be less than 24 hours.
