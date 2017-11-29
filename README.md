@@ -35,6 +35,7 @@ coinmarketcap_global(pricecurrency = "EUR", field = "all", limit = 200)
 coinmarketcap_global(pricecurrency ="JPY", field = "total_supply", limit = 50)
 ```
 
+![alt text](http://bitcoinx.com/wp-content/uploads/2014/02/Kraken.jpg)
 ### Kraken's public API
 #### kraken_currency_list()
 This function retrieves the list of currencies supported by Kraken.
