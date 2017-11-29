@@ -62,13 +62,13 @@ binance_trade_list <- function(symbol = "ETHBTC", start_time, end_time, limit) {
                   "&limit=", limit) 
   }
   
-  trade_list_raw <- GET(url)
+  trade_list_raw <- GET("https://api.binance.com/api/v1/aggTrades?symbol=WTCETH&limit=100")
   trade_list_raw <- rawToChar(trade_list_raw$content)
   trade_list_raw <- fromJSON(trade_list_raw)
   trade_list <- data.frame(trade_list_raw)
   
-  trade_list[,1:6] <- lapply(trade_list[,1:6], function(x) as.numeric(as.character(x)))
-  trade_list[,c(6)] <- lapply(trade_list[,c(6)] , function(x) as.POSIXct(x/1000, origin = "1970/01/01"))
+  trade_list[,1:6] <- lapply(trade_list[,1:6], function(x) as.numeric((x)))
+  trade_list[,6] <- as.POSIXct(trade_list[,6]/1000, origin = "1970-01-01")
   
   colnames(trade_list) <- c("agg_tradeID", "price", "quantity", "first_tradeID", 
                             "last_tradeID", "time", "was_buyer_maker", "was_trade_best_price_match")
