@@ -44,25 +44,11 @@ binance_trade_list <- function(symbol = "ETHBTC", fromId, limit, start_time, end
   url <- paste0("https://api.binance.com/api/v1/aggTrades?symbol=", symbol)
   
   if(!missing(limit)){ #if limit is set
-    if(!missing(end_time)){ # if both limit and endtime are set
-      end_time <- as.character(as.numeric(as.POSIXct(end_time)) * 1000)
-      if(!missing(start_time)){ #if limit, start_time and end_time are set
-        return("Please don't input start_time, end_time and limit at the same time")
-        #url <- paste0(url,"&limit=", limit,"&startTime=",start_time, "&endTime=",end_time)
-      }else{ #if limit and end_time are set
-        url <- paste0(url,"&endTime=",end_time,"&limit=", limit) 
-      }
-      
-    }else{   #limit is set but end_time isn't
-      
-      if(!missing(start_time)){ #if limit and start_time are set but end_time isn't
-        start_time <- as.character(as.numeric(as.POSIXct(start_time)) * 1000)
-        url <- paste0(url,"&startTime=",start_time,"&limit=", limit) 
-      }else{ #if only limit is set
-        url <- paste0(url,"&limit=", limit)
-      }
+    if(!missing(fromId)){
+      url <- paste0(url, "&fromId=", fromId, "&limit=", limit)
+    }else{
+      url <- paste0(url, "&limit=", limit) 
     }
-    
   }else{ #if limit is not set
     
     if(missing(start_time)){
@@ -105,7 +91,7 @@ binance_OHLC<- function(symbol = "ETHBTC", interval = "1m", limit, start_time, e
     return(available_intervals)
   }
   
-                
+  
   if(!missing(limit)){ #if limit is set
     if(!missing(end_time)){ # if both limit and endtime are set
       end_time <- as.character(as.numeric(as.POSIXct(end_time)) * 1000)
@@ -140,8 +126,8 @@ binance_OHLC<- function(symbol = "ETHBTC", interval = "1m", limit, start_time, e
     end_time <- as.character(as.numeric(as.POSIXct(end_time)) * 1000)
     url <- paste0(url,"&startTime=",start_time, "&endTime=",end_time)
   }
-    
-
+  
+  
   OHLC_raw <- GET(url)
   OHLC_raw <- rawToChar(OHLC_raw$content)
   OHLC_raw <- fromJSON(OHLC_raw)
