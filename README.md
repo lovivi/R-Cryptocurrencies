@@ -3,7 +3,7 @@
 The purpose of this project is to create several functions in R, easy-to use, using some public APIs for cryptocurrencies.
 As of September 16th 2017, two public APIs are being used: CoinMarketCap and Kraken.
 
-In December 2017, a third API will be fully supported: Binance.
+In December 2017, a third public API will be fully supported: Binance.
 
 ## Getting Started
 
@@ -89,7 +89,7 @@ kraken_recent_spread("ETH", "EUR", "2017-09-14 13:00", FALSE)
 
 ![alt text](https://p13.zdassets.com/hc/settings_assets/1938355/115000012391/vDJ3jjZnVdU1CzsxaiuY6w-logo-en_svg-01.svg)
 
-### Binance's public API - Beta
+### Binance's public API
 #### binance_server_time()
 This function retrieves the server time.
 
