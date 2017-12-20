@@ -2,8 +2,7 @@
 
 The purpose of this project is to create several functions in R, easy-to use, using some public APIs for cryptocurrencies.
 As of September 16th 2017, two public APIs are being used: CoinMarketCap and Kraken.
-
-In December 2017, a third public API will be fully supported: Binance.
+Since December 2017, a third public API has been fully supported: Binance.
 
 ## Getting Started
 
