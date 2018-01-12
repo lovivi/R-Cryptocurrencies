@@ -1,6 +1,6 @@
 # === API Data - Binance =========
 # === built by Etienne Mirland == 
-
+options(scipen=200) 
 library(httr) ; library(jsonlite)
 
 #Function to obtain the server time
@@ -59,8 +59,8 @@ binance_trade_list <- function(symbol = "ETHBTC", fromId, limit, start_time, end
       return("Correct your parameters.")
     }
     
-    start_time <- as.character(as.numeric(as.POSIXct(start_time)) * 1000)
-    end_time <- as.character(as.numeric(as.POSIXct(end_time)) * 1000)
+    start_time <- start_time #as.character(as.numeric(as.POSIXct(start_time)) * 1000)
+    end_time <- end_time #as.character(as.numeric(as.POSIXct(end_time)) * 1000)
     url <- paste0(url,"&startTime=",start_time, "&endTime=",end_time)
   }
   
@@ -122,8 +122,8 @@ binance_OHLC<- function(symbol = "ETHBTC", interval = "1m", limit, start_time, e
       return("Correct your parameters.")
     }
     
-    start_time <- as.character(as.numeric(as.POSIXct(start_time)) * 1000)
-    end_time <- as.character(as.numeric(as.POSIXct(end_time)) * 1000)
+    start_time <- as.character(start_time)#as.character(as.numeric(as.POSIXct(start_time)) * 1000)
+    end_time <- as.character(end_time)#as.character(as.numeric(as.POSIXct(end_time)) * 1000)
     url <- paste0(url,"&startTime=",start_time, "&endTime=",end_time)
   }
   
